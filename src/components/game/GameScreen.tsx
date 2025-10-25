@@ -144,8 +144,8 @@ const GameScreen = ({ gameState, onGameStateChange, onGameOver, onPause }: GameS
           id: `projectile-${Date.now()}`,
           x: player.x + player.width / 2 - 2,
           y: player.y,
-          width: 4,
-          height: 10,
+          width: 7,
+          height: 15,
           speed: PROJECTILE_SPEED
         };
 
@@ -313,21 +313,13 @@ const GameScreen = ({ gameState, onGameStateChange, onGameOver, onPause }: GameS
           ctx.strokeRect(enemy.x, enemy.y, enemy.width, enemy.height);
         }
 
-        // Add color overlay for correct/incorrect answers
-        if (enemy.isCorrect) {
-          ctx.fillStyle = 'rgba(0, 255, 136, 0.3)';
-        } else {
-          ctx.fillStyle = 'rgba(255, 68, 68, 0.3)';
-        }
-        ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-
         // Draw answer text
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 12px Arial';
         ctx.textAlign = 'center';
         ctx.shadowColor = '#000000';
-        ctx.shadowOffsetX = 1;
-        ctx.shadowOffsetY = 1;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
         ctx.shadowBlur = 2;
         ctx.fillText(enemy.answer, enemy.x + enemy.width / 2, enemy.y + enemy.height + 20);
         ctx.shadowColor = 'transparent';
